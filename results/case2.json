@@ -1,0 +1,461 @@
+{
+  "case": "case2",
+  "numbers": {
+    "rows_read": {
+      "value": 128217,
+      "source": "sql/rows_read.sql",
+      "unit": ""
+    },
+    "exploratory_tests": {
+      "value": 4862,
+      "source": "sql/qualifying_arms.sql + test_summary() + lift_distribution()",
+      "unit": ""
+    },
+    "exploratory_qualifying": {
+      "value": 4862,
+      "source": "sql/candidate_count.sql",
+      "unit": ""
+    },
+    "exploratory_two_arm": {
+      "value": 127,
+      "source": "sql/candidate_count.sql",
+      "unit": ""
+    },
+    "exploratory_rule_candidates": {
+      "value": 55,
+      "source": "sql/candidate_count.sql",
+      "unit": ""
+    },
+    "shared_tests_between_files": {
+      "value": 0,
+      "source": "sql/overlap.sql",
+      "unit": ""
+    },
+    "exploratory_lift_p10_pct": {
+      "value": -18.783736,
+      "source": "sql/qualifying_arms.sql + test_summary() + lift_distribution()",
+      "unit": "%"
+    },
+    "exploratory_lift_p25_pct": {
+      "value": -2.284756,
+      "source": "sql/qualifying_arms.sql + test_summary() + lift_distribution()",
+      "unit": "%"
+    },
+    "exploratory_lift_median_pct": {
+      "value": 16.920691,
+      "source": "sql/qualifying_arms.sql + test_summary() + lift_distribution()",
+      "unit": "%"
+    },
+    "exploratory_lift_p75_pct": {
+      "value": 46.362729,
+      "source": "sql/qualifying_arms.sql + test_summary() + lift_distribution()",
+      "unit": "%"
+    },
+    "exploratory_lift_p90_pct": {
+      "value": 88.68094,
+      "source": "sql/qualifying_arms.sql + test_summary() + lift_distribution()",
+      "unit": "%"
+    },
+    "exploratory_significant_share_pct": {
+      "value": 26.0181,
+      "source": "sql/qualifying_arms.sql + test_summary() + lift_distribution()",
+      "unit": "%"
+    },
+    "exploratory_control_best_share_pct": {
+      "value": 28.116002,
+      "source": "sql/qualifying_arms.sql + test_summary() + lift_distribution()",
+      "unit": "%"
+    },
+    "confirmatory_tests": {
+      "value": 22673,
+      "source": "sql/qualifying_arms.sql + test_summary() + lift_distribution()",
+      "unit": ""
+    },
+    "confirmatory_lift_p10_pct": {
+      "value": -19.636053,
+      "source": "sql/qualifying_arms.sql + test_summary() + lift_distribution()",
+      "unit": "%"
+    },
+    "confirmatory_lift_p25_pct": {
+      "value": -3.493423,
+      "source": "sql/qualifying_arms.sql + test_summary() + lift_distribution()",
+      "unit": "%"
+    },
+    "confirmatory_lift_median_pct": {
+      "value": 16.197891,
+      "source": "sql/qualifying_arms.sql + test_summary() + lift_distribution()",
+      "unit": "%"
+    },
+    "confirmatory_lift_p75_pct": {
+      "value": 45.293709,
+      "source": "sql/qualifying_arms.sql + test_summary() + lift_distribution()",
+      "unit": "%"
+    },
+    "confirmatory_lift_p90_pct": {
+      "value": 90.643135,
+      "source": "sql/qualifying_arms.sql + test_summary() + lift_distribution()",
+      "unit": "%"
+    },
+    "confirmatory_significant_share_pct": {
+      "value": 25.832488,
+      "source": "sql/qualifying_arms.sql + test_summary() + lift_distribution()",
+      "unit": "%"
+    },
+    "confirmatory_control_best_share_pct": {
+      "value": 29.427072,
+      "source": "sql/qualifying_arms.sql + test_summary() + lift_distribution()",
+      "unit": "%"
+    },
+    "we_test_id": {
+      "value": "52447209aadb065894000a68",
+      "source": "sql/worked_example.sql",
+      "unit": ""
+    },
+    "we_control_headline": {
+      "value": "Miley Cyrus Points Out Something Wrong With America \u2014 And She's Absolutely Right",
+      "source": "sql/worked_example.sql",
+      "unit": ""
+    },
+    "we_variant_headline": {
+      "value": "IMAGE: Miley Cyrus Points Out Something Wrong With America \u2014 And She's Absolutely Right",
+      "source": "sql/worked_example.sql",
+      "unit": ""
+    },
+    "we_control_impressions": {
+      "value": 13921,
+      "source": "sql/worked_example.sql",
+      "unit": ""
+    },
+    "we_variant_impressions": {
+      "value": 14253,
+      "source": "sql/worked_example.sql",
+      "unit": ""
+    },
+    "we_control_clicks": {
+      "value": 883,
+      "source": "sql/worked_example.sql",
+      "unit": ""
+    },
+    "we_variant_clicks": {
+      "value": 829,
+      "source": "sql/worked_example.sql",
+      "unit": ""
+    },
+    "we_total_impressions": {
+      "value": 28174,
+      "source": "sql/worked_example.sql",
+      "unit": ""
+    },
+    "we_control_ctr_pct": {
+      "value": 6.342935,
+      "source": "sql/worked_example.sql + worked_example_stats()",
+      "unit": "%"
+    },
+    "we_variant_ctr_pct": {
+      "value": 5.816319,
+      "source": "sql/worked_example.sql + worked_example_stats()",
+      "unit": "%"
+    },
+    "we_control_ctr_wilson_lo_pct": {
+      "value": 5.949974,
+      "source": "sql/worked_example.sql + worked_example_stats()",
+      "unit": "%"
+    },
+    "we_control_ctr_wilson_hi_pct": {
+      "value": 6.759984,
+      "source": "sql/worked_example.sql + worked_example_stats()",
+      "unit": "%"
+    },
+    "we_variant_ctr_wilson_lo_pct": {
+      "value": 5.443848,
+      "source": "sql/worked_example.sql + worked_example_stats()",
+      "unit": "%"
+    },
+    "we_variant_ctr_wilson_hi_pct": {
+      "value": 6.212601,
+      "source": "sql/worked_example.sql + worked_example_stats()",
+      "unit": "%"
+    },
+    "we_diff_points": {
+      "value": -0.526616,
+      "source": "sql/worked_example.sql + worked_example_stats()",
+      "unit": "percentage points"
+    },
+    "we_diff_wilson_lo_points": {
+      "value": -1.08578,
+      "source": "sql/worked_example.sql + worked_example_stats()",
+      "unit": "percentage points"
+    },
+    "we_diff_wilson_hi_points": {
+      "value": 0.031468,
+      "source": "sql/worked_example.sql + worked_example_stats()",
+      "unit": "percentage points"
+    },
+    "we_relative_lift_pct": {
+      "value": -8.302399,
+      "source": "sql/worked_example.sql + worked_example_stats()",
+      "unit": "%"
+    },
+    "we_z": {
+      "value": -1.849879,
+      "source": "sql/worked_example.sql + worked_example_stats()",
+      "unit": ""
+    },
+    "we_p_value": {
+      "value": 0.064331,
+      "source": "sql/worked_example.sql + worked_example_stats()",
+      "unit": ""
+    },
+    "we_mde_points": {
+      "value": 0.797544,
+      "source": "sql/worked_example.sql + worked_example_stats()",
+      "unit": "percentage points"
+    },
+    "we_mde_relative_pct": {
+      "value": 13.124996,
+      "source": "sql/worked_example.sql + worked_example_stats()",
+      "unit": "%"
+    },
+    "we_obf_stop_look": {
+      "value": 3,
+      "source": "reconstruct_stream() + obf_on_stream()",
+      "unit": ""
+    },
+    "msprt_tau": {
+      "value": 0.006032,
+      "source": "sql/qualifying_arms.sql + tau_squared()",
+      "unit": ""
+    },
+    "we_msprt_stop_impressions": {
+      "value": 16500,
+      "source": "reconstruct_stream() + msprt_on_stream()",
+      "unit": ""
+    },
+    "we_msprt_final_lambda": {
+      "value": 1.72963,
+      "source": "reconstruct_stream() + msprt_on_stream()",
+      "unit": ""
+    },
+    "we_msprt_threshold": {
+      "value": 20.0,
+      "source": "msprt_on_stream()",
+      "unit": ""
+    },
+    "fpr_peeking_pct": {
+      "value": 50.576018,
+      "source": "sql/qualifying_arms.sql + null_false_positive_rates()",
+      "unit": "%"
+    },
+    "fpr_obf_pct": {
+      "value": 14.193706,
+      "source": "sql/qualifying_arms.sql + null_false_positive_rates()",
+      "unit": "%"
+    },
+    "fpr_fixed_pct": {
+      "value": 14.231119,
+      "source": "sql/qualifying_arms.sql + null_false_positive_rates()",
+      "unit": "%"
+    },
+    "fpr_two_arm_peeking_pct": {
+      "value": 17.864286,
+      "source": "sql/qualifying_arms.sql + null_false_positive_rates()",
+      "unit": "%"
+    },
+    "fpr_two_arm_obf_pct": {
+      "value": 4.88254,
+      "source": "sql/qualifying_arms.sql + null_false_positive_rates()",
+      "unit": "%"
+    },
+    "fpr_two_arm_fixed_pct": {
+      "value": 4.984921,
+      "source": "sql/qualifying_arms.sql + null_false_positive_rates()",
+      "unit": "%"
+    },
+    "fpr_tests": {
+      "value": 4862,
+      "source": "sql/qualifying_arms.sql + null_false_positive_rates()",
+      "unit": ""
+    },
+    "fpr_two_arm_tests": {
+      "value": 126,
+      "source": "sql/qualifying_arms.sql + null_false_positive_rates()",
+      "unit": ""
+    },
+    "fpr_draws": {
+      "value": 1000,
+      "source": "sql/qualifying_arms.sql + null_false_positive_rates()",
+      "unit": ""
+    },
+    "curse_tests": {
+      "value": 4850,
+      "source": "sql/qualifying_arms.sql + winners_curse()",
+      "unit": ""
+    },
+    "curse_mean_lift_first_half_pct": {
+      "value": 39.60927,
+      "source": "sql/qualifying_arms.sql + winners_curse()",
+      "unit": "%"
+    },
+    "curse_mean_lift_second_half_pct": {
+      "value": 21.493002,
+      "source": "sql/qualifying_arms.sql + winners_curse()",
+      "unit": "%"
+    },
+    "curse_median_lift_first_half_pct": {
+      "value": 21.47272,
+      "source": "sql/qualifying_arms.sql + winners_curse()",
+      "unit": "%"
+    },
+    "curse_median_lift_second_half_pct": {
+      "value": 5.986624,
+      "source": "sql/qualifying_arms.sql + winners_curse()",
+      "unit": "%"
+    },
+    "curse_shrinkage_points": {
+      "value": 18.116268,
+      "source": "sql/qualifying_arms.sql + winners_curse()",
+      "unit": ""
+    },
+    "curse_lower_in_second_half_share_pct": {
+      "value": 64.329897,
+      "source": "sql/qualifying_arms.sql + winners_curse()",
+      "unit": "%"
+    }
+  },
+  "tables": {
+    "worked_example_arms": {
+      "source": "sql/worked_example.sql",
+      "columns": [
+        "test_id",
+        "test_week",
+        "created_at",
+        "arm_rank",
+        "headline",
+        "eyecatcher_id",
+        "impressions",
+        "clicks",
+        "ctr"
+      ],
+      "rows": [
+        [
+          "52447209aadb065894000a68",
+          201338,
+          "2013-09-26 17:43:55.289",
+          1,
+          "Miley Cyrus Points Out Something Wrong With America \u2014 And She's Absolutely Right",
+          "5332c0561fae79f09f00ca24",
+          13921,
+          883,
+          0.063429
+        ],
+        [
+          "52447209aadb065894000a68",
+          201338,
+          "2013-09-26 17:45:52.381",
+          2,
+          "IMAGE: Miley Cyrus Points Out Something Wrong With America \u2014 And She's Absolutely Right",
+          "5332c0561fae79f09f00ca24",
+          14253,
+          829,
+          0.058163
+        ]
+      ]
+    },
+    "obf_boundaries": {
+      "source": "obf_boundaries()",
+      "columns": [
+        "look",
+        "z_boundary"
+      ],
+      "rows": [
+        [
+          1,
+          4.382693
+        ],
+        [
+          2,
+          3.099032
+        ],
+        [
+          3,
+          2.556169
+        ],
+        [
+          4,
+          2.252838
+        ],
+        [
+          5,
+          2.065
+        ]
+      ]
+    },
+    "we_obf_looks": {
+      "source": "reconstruct_stream() + obf_on_stream()",
+      "columns": [
+        "look",
+        "impressions",
+        "z",
+        "boundary",
+        "crossed"
+      ],
+      "rows": [
+        [
+          1,
+          5635,
+          -0.925174,
+          4.382693,
+          false
+        ],
+        [
+          2,
+          11270,
+          -2.693037,
+          3.099032,
+          false
+        ],
+        [
+          3,
+          16904,
+          -3.163738,
+          2.556169,
+          true
+        ],
+        [
+          4,
+          22539,
+          -2.601852,
+          2.252838,
+          true
+        ],
+        [
+          5,
+          28174,
+          -1.849879,
+          2.065,
+          false
+        ]
+      ]
+    }
+  },
+  "figures": {
+    "worked_example_sequential": {
+      "file": "cases/02_experiment_readout/figures/worked_example_sequential.png",
+      "source": "reconstruct_stream() + plot_worked_example()"
+    },
+    "lift_distribution": {
+      "file": "cases/02_experiment_readout/figures/lift_distribution.png",
+      "source": "test_summary() + plot_lifts()"
+    },
+    "false_positive_rates": {
+      "file": "cases/02_experiment_readout/figures/false_positive_rates.png",
+      "source": "null_false_positive_rates() + plot_fpr()"
+    }
+  },
+  "notes": {
+    "dataset": "Upworthy Research Archive (exploratory and confirmatory packages)",
+    "licence": "CC BY 4.0",
+    "recommendation": "do not ship, the test is inconclusive",
+    "headline": "worked example lift -8.3 % (p = 0.06), peeking false positives 50.6 % vs 14.2 % with the boundary"
+  }
+}

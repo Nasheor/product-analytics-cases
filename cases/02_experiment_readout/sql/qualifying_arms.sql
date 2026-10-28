@@ -13,7 +13,7 @@ WITH src AS (
         eyecatcher_id,
         impressions,
         clicks,
-        ROW_NUMBER() OVER (PARTITION BY clickability_test_id ORDER BY created_at, "Unnamed: 0") AS arm_rank,
+        ROW_NUMBER() OVER (PARTITION BY clickability_test_id ORDER BY created_at, headline) AS arm_rank,
         COUNT(*) OVER (PARTITION BY clickability_test_id) AS arms,
         MIN(impressions) OVER (PARTITION BY clickability_test_id) AS min_impressions,
         SUM(impressions) OVER (PARTITION BY clickability_test_id) AS test_impressions,

@@ -71,8 +71,6 @@ def plot_funnel(conv: pd.DataFrame) -> Path:
     x = np.arange(len(w))
     for i, (col, lab) in enumerate(labels.items()):
         ax.plot(x, w[col], color=SERIES[i], label=lab)
-        ax.annotate(lab, (x[-1], w[col].iloc[-1]), xytext=(4, 0), textcoords="offset points",
-                    fontsize=8, color=TEXT_2, va="center")
     ax.set_xticks(x[::3])
     ax.set_xticklabels(w["month"].iloc[::3], rotation=0)
     ax.set_ylabel("conversion from the previous step, %")

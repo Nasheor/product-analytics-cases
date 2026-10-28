@@ -22,12 +22,12 @@ SELECT
     e.clickability_test_id AS test_id,
     e.test_week,
     e.created_at,
-    ROW_NUMBER() OVER (ORDER BY e.created_at, e."Unnamed: 0") AS arm_rank,
+    ROW_NUMBER() OVER (ORDER BY e.created_at, e.headline) AS arm_rank,
     e.headline,
     e.eyecatcher_id,
     e.impressions,
     e.clicks,
     e.clicks * 1.0 / e.impressions AS ctr
 FROM exploratory e
-JOIN chosen USING (test_id)
+JOIN chosen ON chosen.test_id = e.clickability_test_id
 ORDER BY arm_rank
