@@ -1,0 +1,11 @@
+Derived aggregates from the Brazilian E-Commerce Public Dataset by Olist.
+
+Licence: CC BY-NC-SA 4.0 (Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International)
+https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+Attribution: Olist, "Brazilian E-Commerce Public Dataset by Olist", Kaggle,
+https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
+
+The files in this folder are monthly and cohort aggregates computed by the SQL under cases/*/sql/.
+They are shared under the same licence as the source (share-alike) and only for non-commercial use.
+The raw files are not part of this repository. The code that produced these files is MIT licensed.

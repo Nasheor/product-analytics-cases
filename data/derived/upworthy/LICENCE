@@ -1,0 +1,13 @@
+Derived aggregates from the Upworthy Research Archive.
+
+Licence: CC BY 4.0 (Creative Commons Attribution 4.0 International)
+https://creativecommons.org/licenses/by/4.0/
+
+Attribution: J. Nathan Matias, Kevin Munger, Marianne Aubin Le Quere and Charles Ebersole (2021),
+"The Upworthy Research Archive, a time series of 32,487 experiments in U.S. media",
+Scientific Data 8, 195, https://doi.org/10.1038/s41597-021-00934-7. Data on the Open Science Framework,
+https://osf.io/jd64p/ , published by Cornell University.
+
+The files in this folder are per-test and per-arm aggregates computed by the SQL under
+cases/02_experiment_readout/sql/. The raw files are not part of this repository.
+The code that produced these files is MIT licensed.
