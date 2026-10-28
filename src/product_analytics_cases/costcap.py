@@ -90,7 +90,7 @@ class Ledger:
     def record(self, provider: str, model: str, input_tokens: int, output_tokens: int, note: str = "") -> float:
         eur = price_eur(model, input_tokens, output_tokens)
         row = {
-            "ts": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+            "ts": dt.datetime.now(dt.UTC).isoformat(timespec="seconds"),
             "run_id": self.run_id,
             "provider": provider,
             "model": model,

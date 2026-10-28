@@ -25,7 +25,7 @@ says so. There is no guardrail metric in the archive.
 ```
 python analysis.py
 python -m jupytext --sync notebook.py
-python -m jupyter nbconvert --execute --to notebook --inplace notebook.ipynb
+python -m nbconvert --execute --to notebook --inplace --ExecutePreprocessor.kernel_name=product-analytics-cases notebook.ipynb
 ```
 Outputs: `../../results/case2.json`, `figures/*.png`, `../../data/derived/upworthy/*.csv`.
 Every number in `memo.md` comes from a query in `sql/` or a function in `analysis.py`, named in the

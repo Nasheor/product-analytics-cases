@@ -16,9 +16,18 @@ import pandas as pd
 
 from product_analytics_cases.common import Results, connect, run_sql, write_derived
 from product_analytics_cases.plotting import SERIES, TEXT_2, plt, save, style
-from product_analytics_cases.sequential import (cumulative_counts, diff_wilson_interval, mde_absolute, msprt_on_stream,
-                                                null_false_positive_rates, obf_boundaries, obf_on_stream,
-                                                reconstruct_stream, two_proportion_ztest, wilson_interval)
+from product_analytics_cases.sequential import (
+    cumulative_counts,
+    diff_wilson_interval,
+    mde_absolute,
+    msprt_on_stream,
+    null_false_positive_rates,
+    obf_boundaries,
+    obf_on_stream,
+    reconstruct_stream,
+    two_proportion_ztest,
+    wilson_interval,
+)
 
 HERE = Path(__file__).resolve().parent
 FIG = HERE / "figures"
@@ -143,7 +152,7 @@ def plot_fpr(fpr: dict) -> Path:
     ax.set_yticklabels(labels)
     ax.invert_yaxis()
     ax.set_xlabel("false-positive rate under the null, %")
-    ax.set_title("Stopping rule and false positives (null re-labelling, 1,000 draws per test)")
+    ax.set_title("Stopping rule and false positives under the null")
     ax.legend(fontsize=8, loc="lower right")
     return save(fig, FIG / "false_positive_rates.png")
 
@@ -207,27 +216,30 @@ def main() -> None:
     res.number("we_p_value", p, src)
     res.number("we_mde_points", 100 * mde, src, "percentage points")
     res.number("we_mde_relative_pct", 100 * mde / pooled, src, "%")
+    res.number("alpha_pct", 100 * ALPHA, src, "%")
+    res.number("confidence_pct", 100 * (1 - ALPHA), src, "%")
+    res.number("power_pct", 80.0, src, "%")
 
     bounds = obf_boundaries(LOOKS, ALPHA)
-    res.table("obf_boundaries", pd.DataFrame({"look": range(1, LOOKS + 1), "z_boundary": bounds}), "obf_boundaries()")
+    res.table("obf_boundaries", pd.DataFrame({"look": range(1, LOOKS + 1), "z_boundary": bounds}), "sequential.obf_boundaries()")
     arm_ids, clicks = reconstruct_stream([(nA, kA), (nB, kB)], SEED)
     imps, clk = cumulative_counts(arm_ids, clicks, 2)
     obf = obf_on_stream(imps, clk, bounds)
-    res.table("we_obf_looks", pd.DataFrame(obf["looks"]), "reconstruct_stream() + obf_on_stream()")
-    res.number("we_obf_stop_look", obf["stop_look"] if obf["stop_look"] else "none", "reconstruct_stream() + obf_on_stream()")
+    res.table("we_obf_looks", pd.DataFrame(obf["looks"]), "sequential.reconstruct_stream() + sequential.obf_on_stream()")
+    res.number("we_obf_stop_look", obf["stop_look"] if obf["stop_look"] else "none", "sequential.reconstruct_stream() + sequential.obf_on_stream()")
     tau2 = tau_squared(arms_e)
     res.number("msprt_tau", float(np.sqrt(tau2)), "sql/qualifying_arms.sql + tau_squared()")
     ms = msprt_on_stream(imps, clk, tau2, ALPHA, every=100)
     res.number("we_msprt_stop_impressions", ms["stop_impressions"] if ms["stop_impressions"] else "none",
-               "reconstruct_stream() + msprt_on_stream()")
-    res.number("we_msprt_final_lambda", ms["final_lambda"], "reconstruct_stream() + msprt_on_stream()")
-    res.number("we_msprt_threshold", ms["threshold"], "msprt_on_stream()")
+               "sequential.reconstruct_stream() + sequential.msprt_on_stream()")
+    res.number("we_msprt_final_lambda", ms["final_lambda"], "sequential.reconstruct_stream() + sequential.msprt_on_stream()")
+    res.number("we_msprt_threshold", ms["threshold"], "sequential.msprt_on_stream()")
 
     # across tests: false positives under the null
     sizes = [g.sort_values("arm_rank")["impressions"].astype(int).tolist() for _, g in arms_e.groupby("test_id", sort=True)]
     ctrs = [float(g["pooled_ctr"].iloc[0]) for _, g in arms_e.groupby("test_id", sort=True)]
     fpr = null_false_positive_rates(sizes, ctrs, DRAWS, SEED, bounds, peek_every=1000, alpha=ALPHA)
-    fsrc = "sql/qualifying_arms.sql + null_false_positive_rates()"
+    fsrc = "sql/qualifying_arms.sql + sequential.null_false_positive_rates()"
     res.number("fpr_peeking_pct", fpr["peeking"], fsrc, "%")
     res.number("fpr_obf_pct", fpr["obf"], fsrc, "%")
     res.number("fpr_fixed_pct", fpr["fixed"], fsrc, "%")
@@ -242,12 +254,12 @@ def main() -> None:
     for k, v in curse.items():
         res.number(f"curse_{k}", v, "sql/qualifying_arms.sql + winners_curse()", "%" if k.endswith("pct") else "")
 
-    res.figure("worked_example_sequential", plot_worked_example(obf, ms, bounds), "reconstruct_stream() + plot_worked_example()")
+    res.figure("worked_example_sequential", plot_worked_example(obf, ms, bounds), "sequential.reconstruct_stream() + plot_worked_example()")
     res.figure("lift_distribution", plot_lifts(summ_e, summ_c), "test_summary() + plot_lifts()")
-    res.figure("false_positive_rates", plot_fpr(fpr), "null_false_positive_rates() + plot_fpr()")
+    res.figure("false_positive_rates", plot_fpr(fpr), "sequential.null_false_positive_rates() + plot_fpr()")
 
     ship = p < ALPHA and d_lo > 0
-    verdict = "ship the variant headline" if ship else "do not ship, the test is inconclusive"
+    verdict = "ship the variant headline" if ship else "do not ship the variant, keep the control headline"
     res.note("recommendation", verdict)
     res.note("headline", f"worked example lift {100 * (ctr_b / ctr_a - 1):+.1f} % (p = {p:.2f}), "
                          f"peeking false positives {fpr['peeking']:.1f} % vs {fpr['obf']:.1f} % with the boundary")

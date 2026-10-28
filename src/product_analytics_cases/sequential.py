@@ -75,7 +75,7 @@ def obf_boundaries(looks: int = 5, alpha: float = 0.05, step: float = 0.005, zma
     f = norm.pdf(x, scale=math.sqrt(t[0]))
     bounds = []
     for j in range(looks):
-        def exit_prob(c: float) -> float:
+        def exit_prob(c: float, f: np.ndarray = f) -> float:
             return float(np.sum(f[np.abs(x) >= c]) * step)
         lo, hi = 0.0, zmax
         for _ in range(60):

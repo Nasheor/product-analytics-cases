@@ -34,6 +34,18 @@ def _run(cmd: list[str], cwd: Path) -> None:
         print("  ", line)
 
 
+KERNEL = "product-analytics-cases"
+
+
+def ensure_kernel() -> None:
+    """Register this interpreter as a Jupyter kernel inside its own prefix, so the notebooks run on the
+    repo's environment and not on whichever python3 kernel is registered elsewhere on the machine."""
+    spec = Path(sys.prefix) / "share" / "jupyter" / "kernels" / KERNEL / "kernel.json"
+    if not spec.exists():
+        _run([sys.executable, "-m", "ipykernel", "install", "--prefix", sys.prefix, "--name", KERNEL,
+              "--display-name", "Python (product-analytics-cases)"], CASES.parent)
+
+
 def ensure_data() -> None:
     for ds in ("olist", "upworthy"):
         if not raw_present(ds):
@@ -78,7 +90,7 @@ def build_summary() -> dict:
         readme_numbers[f"{key}_headline"] = notes["headline"]
         readme_numbers[f"{key}_memo_words"] = str(words)
         readme_numbers[f"{key}_notebook"] = "yes" if executed else "no"
-    return {"generated_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+    return {"generated_at": dt.datetime.now(dt.UTC).isoformat(timespec="seconds"),
             "data_sources": {k: {"rows_total": v["rows_total"], "files": len(v["files"])} for k, v in sources.items()},
             "cases": rows, "readme_numbers": readme_numbers}
 
@@ -90,11 +102,13 @@ def run(skip_notebooks: bool = False) -> int:
     for name in CASE_DIRS:
         _run([sys.executable, "analysis.py"], CASES / name)
     if not skip_notebooks:
+        ensure_kernel()
         for name in CASE_DIRS:
             case_dir = CASES / name
             _run([sys.executable, "-m", "jupytext", "--sync", "notebook.py"], case_dir)
-            _run([sys.executable, "-m", "jupyter", "nbconvert", "--execute", "--to", "notebook", "--inplace",
-                  "--ExecutePreprocessor.timeout=600", "notebook.ipynb"], case_dir)
+            _run([sys.executable, "-m", "nbconvert", "--execute", "--to", "notebook", "--inplace",
+                  f"--ExecutePreprocessor.kernel_name={KERNEL}", "--ExecutePreprocessor.timeout=600",
+                  "notebook.ipynb"], case_dir)
     summary = build_summary()
     summary["seconds"] = round(time.time() - t0, 1)
     (RESULTS / "summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
@@ -106,7 +120,7 @@ def run(skip_notebooks: bool = False) -> int:
 def smoke() -> int:
     rc = run()
     out = {"smoke_ok": "yes" if rc == 0 else "no",
-           "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")}
+           "generated_at": dt.datetime.now(dt.UTC).isoformat(timespec="seconds")}
     (RESULTS / "smoke.json").write_text(json.dumps(out, indent=2), encoding="utf-8")
     print("smoke ok")
     return rc

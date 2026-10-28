@@ -6,8 +6,15 @@ import math
 import numpy as np
 from scipy.stats import norm
 
-from product_analytics_cases.sequential import (cumulative_counts, mde_absolute, msprt_lambda, obf_boundaries,
-                                                reconstruct_stream, two_proportion_ztest, wilson_interval)
+from product_analytics_cases.sequential import (
+    cumulative_counts,
+    mde_absolute,
+    msprt_lambda,
+    obf_boundaries,
+    reconstruct_stream,
+    two_proportion_ztest,
+    wilson_interval,
+)
 
 
 def test_obf_boundaries_match_the_spending_function():

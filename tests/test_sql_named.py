@@ -1,5 +1,6 @@
-"""Every number, table and figure in results/<case>.json names a SQL file in the case's sql/ folder
-or a function defined in the case's analysis.py, and that source exists."""
+"""Every number, table and figure in results/<case>.json names a SQL file in the case's sql/ folder,
+a function defined in the case's analysis.py, or a ``module.function()`` defined in the package under
+src/, and that source exists."""
 import ast
 import json
 
@@ -13,12 +14,19 @@ def _functions(path):
     return {n.name for n in ast.walk(tree) if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef))}
 
 
+def _package_functions(repo_root, pkg_name):
+    out = set()
+    for p in (repo_root / "src" / pkg_name).glob("*.py"):
+        out |= {f"{p.stem}.{fn}" for fn in _functions(p)}
+    return out
+
+
 @pytest.mark.parametrize("folder,key", list(CASES.items()))
-def test_every_result_has_a_named_source(repo_root, folder, key):
+def test_every_result_has_a_named_source(repo_root, pkg_name, folder, key):
     case_dir = repo_root / "cases" / folder
     res = json.loads((repo_root / "results" / f"{key}.json").read_text(encoding="utf-8"))
     sql_files = {p.name for p in (case_dir / "sql").glob("*.sql")}
-    funcs = _functions(case_dir / "analysis.py")
+    funcs = _functions(case_dir / "analysis.py") | _package_functions(repo_root, pkg_name)
     bad = []
     for section in ("numbers", "tables", "figures"):
         for k, item in res[section].items():

@@ -114,15 +114,16 @@ def plot_series(all_series: dict[str, pd.DataFrame]) -> Path:
         win = m.get("window", WINDOW)
         w = s[(s["month"] >= WINDOW[0]) & (s["month"] <= WINDOW[1])]
         x = np.arange(len(w))
+        scale = 1e6 if m["unit"].startswith("BRL") else 1.0
         for i, col in enumerate([c for c in s.columns if c != "month"]):
-            y = w[col].astype(float).copy()
+            y = w[col].astype(float).copy() / scale
             if m.get("window") and col.startswith("c_"):
                 y[w["month"] > win[1]] = np.nan
             ax.plot(x, y, color=SERIES[i], label=letter(col))
         ax.set_xticks(x[::6])
         ax.set_xticklabels(w["month"].iloc[::6], fontsize=8)
         ax.set_title(m["name"], fontsize=10)
-        ax.set_ylabel(m["unit"], fontsize=8)
+        ax.set_ylabel("BRL millions per month" if scale > 1 else m["unit"], fontsize=8)
         ax.legend(fontsize=8, loc="best")
     fig.suptitle("Six metrics under three definitions each, by month", x=0.01, ha="left", fontweight="bold")
     return save(fig, FIG / "definitions_small_multiples.png")

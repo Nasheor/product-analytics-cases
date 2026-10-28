@@ -216,9 +216,24 @@
       "source": "sql/worked_example.sql + worked_example_stats()",
       "unit": "%"
     },
+    "alpha_pct": {
+      "value": 5.0,
+      "source": "sql/worked_example.sql + worked_example_stats()",
+      "unit": "%"
+    },
+    "confidence_pct": {
+      "value": 95.0,
+      "source": "sql/worked_example.sql + worked_example_stats()",
+      "unit": "%"
+    },
+    "power_pct": {
+      "value": 80.0,
+      "source": "sql/worked_example.sql + worked_example_stats()",
+      "unit": "%"
+    },
     "we_obf_stop_look": {
       "value": 3,
-      "source": "reconstruct_stream() + obf_on_stream()",
+      "source": "sequential.reconstruct_stream() + sequential.obf_on_stream()",
       "unit": ""
     },
     "msprt_tau": {
@@ -228,62 +243,62 @@
     },
     "we_msprt_stop_impressions": {
       "value": 16500,
-      "source": "reconstruct_stream() + msprt_on_stream()",
+      "source": "sequential.reconstruct_stream() + sequential.msprt_on_stream()",
       "unit": ""
     },
     "we_msprt_final_lambda": {
       "value": 1.72963,
-      "source": "reconstruct_stream() + msprt_on_stream()",
+      "source": "sequential.reconstruct_stream() + sequential.msprt_on_stream()",
       "unit": ""
     },
     "we_msprt_threshold": {
       "value": 20.0,
-      "source": "msprt_on_stream()",
+      "source": "sequential.msprt_on_stream()",
       "unit": ""
     },
     "fpr_peeking_pct": {
       "value": 50.576018,
-      "source": "sql/qualifying_arms.sql + null_false_positive_rates()",
+      "source": "sql/qualifying_arms.sql + sequential.null_false_positive_rates()",
       "unit": "%"
     },
     "fpr_obf_pct": {
       "value": 14.193706,
-      "source": "sql/qualifying_arms.sql + null_false_positive_rates()",
+      "source": "sql/qualifying_arms.sql + sequential.null_false_positive_rates()",
       "unit": "%"
     },
     "fpr_fixed_pct": {
       "value": 14.231119,
-      "source": "sql/qualifying_arms.sql + null_false_positive_rates()",
+      "source": "sql/qualifying_arms.sql + sequential.null_false_positive_rates()",
       "unit": "%"
     },
     "fpr_two_arm_peeking_pct": {
       "value": 17.864286,
-      "source": "sql/qualifying_arms.sql + null_false_positive_rates()",
+      "source": "sql/qualifying_arms.sql + sequential.null_false_positive_rates()",
       "unit": "%"
     },
     "fpr_two_arm_obf_pct": {
       "value": 4.88254,
-      "source": "sql/qualifying_arms.sql + null_false_positive_rates()",
+      "source": "sql/qualifying_arms.sql + sequential.null_false_positive_rates()",
       "unit": "%"
     },
     "fpr_two_arm_fixed_pct": {
       "value": 4.984921,
-      "source": "sql/qualifying_arms.sql + null_false_positive_rates()",
+      "source": "sql/qualifying_arms.sql + sequential.null_false_positive_rates()",
       "unit": "%"
     },
     "fpr_tests": {
       "value": 4862,
-      "source": "sql/qualifying_arms.sql + null_false_positive_rates()",
+      "source": "sql/qualifying_arms.sql + sequential.null_false_positive_rates()",
       "unit": ""
     },
     "fpr_two_arm_tests": {
       "value": 126,
-      "source": "sql/qualifying_arms.sql + null_false_positive_rates()",
+      "source": "sql/qualifying_arms.sql + sequential.null_false_positive_rates()",
       "unit": ""
     },
     "fpr_draws": {
       "value": 1000,
-      "source": "sql/qualifying_arms.sql + null_false_positive_rates()",
+      "source": "sql/qualifying_arms.sql + sequential.null_false_positive_rates()",
       "unit": ""
     },
     "curse_tests": {
@@ -362,7 +377,7 @@
       ]
     },
     "obf_boundaries": {
-      "source": "obf_boundaries()",
+      "source": "sequential.obf_boundaries()",
       "columns": [
         "look",
         "z_boundary"
@@ -391,7 +406,7 @@
       ]
     },
     "we_obf_looks": {
-      "source": "reconstruct_stream() + obf_on_stream()",
+      "source": "sequential.reconstruct_stream() + sequential.obf_on_stream()",
       "columns": [
         "look",
         "impressions",
@@ -441,7 +456,7 @@
   "figures": {
     "worked_example_sequential": {
       "file": "cases/02_experiment_readout/figures/worked_example_sequential.png",
-      "source": "reconstruct_stream() + plot_worked_example()"
+      "source": "sequential.reconstruct_stream() + plot_worked_example()"
     },
     "lift_distribution": {
       "file": "cases/02_experiment_readout/figures/lift_distribution.png",
@@ -449,13 +464,13 @@
     },
     "false_positive_rates": {
       "file": "cases/02_experiment_readout/figures/false_positive_rates.png",
-      "source": "null_false_positive_rates() + plot_fpr()"
+      "source": "sequential.null_false_positive_rates() + plot_fpr()"
     }
   },
   "notes": {
     "dataset": "Upworthy Research Archive (exploratory and confirmatory packages)",
     "licence": "CC BY 4.0",
-    "recommendation": "do not ship, the test is inconclusive",
+    "recommendation": "do not ship the variant, keep the control headline",
     "headline": "worked example lift -8.3 % (p = 0.06), peeking false positives 50.6 % vs 14.2 % with the boundary"
   }
 }

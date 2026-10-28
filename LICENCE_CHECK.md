@@ -16,7 +16,22 @@ No model is trained in this repo, so "Training allowed" is not applicable throug
 
 ## Packages
 
-Filled after `requirements.lock` is pinned. Licence names come from each package's metadata (`pip show`).
+Direct dependencies pinned in `requirements.lock` on 2026-10-28. Licence names come from each package's own metadata. The packages are used, not redistributed: nothing from them is copied into this repo.
 
 | Item | Source URL | Licence (text or link) | Training allowed | Redistribution allowed | Checked on | Notes |
 |---|---|---|---|---|---|---|
+| duckdb 2.0.0 | https://duckdb.org/ | MIT | not applicable | yes | 2026-10-28 | SQL engine over the CSV files |
+| pandas 3.1.0 | https://pandas.pydata.org | BSD-3-Clause | not applicable | yes | 2026-10-28 | |
+| pyarrow 26.0.0 | https://arrow.apache.org/ | Apache-2.0 | not applicable | yes | 2026-10-28 | pandas backend |
+| numpy 2.5.4 | https://numpy.org | BSD-3-Clause (with 0BSD, MIT and Zlib parts) | not applicable | yes | 2026-10-28 | |
+| scipy 1.18.1 | https://scipy.org/ | BSD-3-Clause | not applicable | yes | 2026-10-28 | normal distribution functions |
+| statsmodels 0.15.0 | https://www.statsmodels.org | BSD-3-Clause | not applicable | yes | 2026-10-28 | pinned per the spec, available in the notebooks |
+| matplotlib 3.11.2 | https://matplotlib.org | PSF-based licence | not applicable | yes | 2026-10-28 | figures |
+| jupytext 1.19.6 | https://github.com/jupytext/jupytext | MIT | not applicable | yes | 2026-10-28 | notebook pairing |
+| nbconvert 7.17.2 | https://jupyter.org | BSD-3-Clause | not applicable | yes | 2026-10-28 | notebook execution |
+| nbformat 5.11.1 | https://jupyter.org | BSD-3-Clause | not applicable | yes | 2026-10-28 | |
+| ipykernel 7.4.0 | https://ipython.org | BSD-3-Clause | not applicable | yes | 2026-10-28 | kernel registered inside the venv |
+| requests 2.34.2 | https://requests.readthedocs.io | Apache-2.0 | not applicable | yes | 2026-10-28 | pinned per the spec, the download script itself uses the standard library |
+| pytest 9.2.0 | https://docs.pytest.org | MIT | not applicable | yes | 2026-10-28 | dev |
+| ruff 0.17.3 | https://docs.astral.sh/ruff | MIT | not applicable | yes | 2026-10-28 | dev |
+| kaggle (Python package) | https://github.com/Kaggle/kaggle-api | Apache-2.0 | not applicable | not used | 2026-10-28 | named in the spec but not installed: no Kaggle credentials, the mirror route replaced it |

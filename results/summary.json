@@ -1,0 +1,60 @@
+{
+  "generated_at": "2026-10-28T15:24:07+00:00",
+  "data_sources": {
+    "olist": {
+      "rows_total": 1550922,
+      "files": 9
+    },
+    "upworthy": {
+      "rows_total": 128217,
+      "files": 2
+    }
+  },
+  "cases": [
+    {
+      "case": "01_funnel_retention",
+      "dataset": "Olist Brazilian E-Commerce (orders, customers, reviews, payments)",
+      "licence": "CC BY-NC-SA 4.0",
+      "rows_read": 401992,
+      "headline": "six-month repeat rate 2.9 %, largest funnel loss at handed to carrier (1.6 %)",
+      "recommendation": "do not fund a loyalty programme yet, fix delivery lateness and instrument repeat intent",
+      "memo_words": 584,
+      "notebook_executed": "yes"
+    },
+    {
+      "case": "02_experiment_readout",
+      "dataset": "Upworthy Research Archive (exploratory and confirmatory packages)",
+      "licence": "CC BY 4.0",
+      "rows_read": 128217,
+      "headline": "worked example lift -8.3 % (p = 0.06), peeking false positives 50.6 % vs 14.2 % with the boundary",
+      "recommendation": "do not ship the variant, keep the control headline",
+      "memo_words": 597,
+      "notebook_executed": "yes"
+    },
+    {
+      "case": "03_metric_definition_review",
+      "dataset": "Olist Brazilian E-Commerce (orders, customers, order items, payments, reviews)",
+      "licence": "CC BY-NC-SA 4.0",
+      "rows_read": 514642,
+      "headline": "Repeat rate: definitions differ by up to 102 % in a month (b vs c, 2017-12)",
+      "recommendation": "adopt the six definitions in spec_sheet.md and compute them all from base_orders",
+      "memo_words": 594,
+      "notebook_executed": "yes"
+    }
+  ],
+  "readme_numbers": {
+    "case1_rows_read": "401,992",
+    "case1_headline": "six-month repeat rate 2.9 %, largest funnel loss at handed to carrier (1.6 %)",
+    "case1_memo_words": "584",
+    "case1_notebook": "yes",
+    "case2_rows_read": "128,217",
+    "case2_headline": "worked example lift -8.3 % (p = 0.06), peeking false positives 50.6 % vs 14.2 % with the boundary",
+    "case2_memo_words": "597",
+    "case2_notebook": "yes",
+    "case3_rows_read": "514,642",
+    "case3_headline": "Repeat rate: definitions differ by up to 102 % in a month (b vs c, 2017-12)",
+    "case3_memo_words": "594",
+    "case3_notebook": "yes"
+  },
+  "seconds": 190.6
+}
