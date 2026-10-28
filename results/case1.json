@@ -1,0 +1,1079 @@
+{
+  "case": "case1",
+  "numbers": {
+    "rows_read": {
+      "value": 401992,
+      "source": "sql/rows_read.sql",
+      "unit": ""
+    },
+    "window_approved_pct": {
+      "value": 99.877891,
+      "source": "sql/funnel_by_month.sql + window_totals()",
+      "unit": "%"
+    },
+    "window_handed_to_carrier_pct": {
+      "value": 98.389427,
+      "source": "sql/funnel_by_month.sql + window_totals()",
+      "unit": "%"
+    },
+    "window_delivered_pct": {
+      "value": 98.795403,
+      "source": "sql/funnel_by_month.sql + window_totals()",
+      "unit": "%"
+    },
+    "window_reviewed_pct": {
+      "value": 99.331629,
+      "source": "sql/funnel_by_month.sql + window_totals()",
+      "unit": "%"
+    },
+    "window_cancel_pct": {
+      "value": 1.192831,
+      "source": "sql/funnel_by_month.sql + window_totals()",
+      "unit": "%"
+    },
+    "window_orders": {
+      "value": 99092,
+      "source": "sql/funnel_by_month.sql + window_totals()",
+      "unit": ""
+    },
+    "window_worst_step": {
+      "value": "handed_to_carrier",
+      "source": "sql/funnel_by_month.sql + window_totals()",
+      "unit": ""
+    },
+    "window_worst_step_loss_pct": {
+      "value": 1.610573,
+      "source": "sql/funnel_by_month.sql + window_totals()",
+      "unit": "%"
+    },
+    "window_end_to_end_pct": {
+      "value": 96.436645,
+      "source": "sql/funnel_by_month.sql + window_totals()",
+      "unit": "%"
+    },
+    "median_hours_to_approve": {
+      "value": 0.35,
+      "source": "sql/step_hours.sql",
+      "unit": "hours"
+    },
+    "median_hours_approve_to_carrier": {
+      "value": 43.65,
+      "source": "sql/step_hours.sql",
+      "unit": "hours"
+    },
+    "median_hours_carrier_to_delivery": {
+      "value": 170.383333,
+      "source": "sql/step_hours.sql",
+      "unit": "hours"
+    },
+    "median_days_carrier_to_delivery": {
+      "value": 7.099306,
+      "source": "sql/step_hours.sql",
+      "unit": "days"
+    },
+    "customers": {
+      "value": 57184,
+      "source": "sql/cohort_retention.sql + pooled_repeat()",
+      "unit": ""
+    },
+    "repeat_1m_pct": {
+      "value": 1.554631,
+      "source": "sql/cohort_retention.sql + pooled_repeat()",
+      "unit": "%"
+    },
+    "repeat_3m_pct": {
+      "value": 2.215655,
+      "source": "sql/cohort_retention.sql + pooled_repeat()",
+      "unit": "%"
+    },
+    "repeat_6m_pct": {
+      "value": 2.869684,
+      "source": "sql/cohort_retention.sql + pooled_repeat()",
+      "unit": "%"
+    },
+    "customers_total": {
+      "value": 96096,
+      "source": "sql/cohort_retention.sql",
+      "unit": ""
+    },
+    "customers_ever_repeat_pct": {
+      "value": 2.851315,
+      "source": "sql/cohort_retention.sql",
+      "unit": "%"
+    },
+    "repeat_6m_state_max_pct": {
+      "value": 3.088565,
+      "source": "sql/repeat_by_segment.sql",
+      "unit": "%"
+    },
+    "repeat_6m_state_max": {
+      "value": "SP",
+      "source": "sql/repeat_by_segment.sql",
+      "unit": ""
+    },
+    "repeat_6m_state_min_pct": {
+      "value": 2.202247,
+      "source": "sql/repeat_by_segment.sql",
+      "unit": "%"
+    },
+    "repeat_6m_state_min": {
+      "value": "SC",
+      "source": "sql/repeat_by_segment.sql",
+      "unit": ""
+    },
+    "repeat_6m_credit_card_pct": {
+      "value": 2.825929,
+      "source": "sql/repeat_by_segment.sql",
+      "unit": "%"
+    },
+    "repeat_6m_boleto_pct": {
+      "value": 2.930862,
+      "source": "sql/repeat_by_segment.sql",
+      "unit": "%"
+    },
+    "repeat_6m_voucher_pct": {
+      "value": 3.630539,
+      "source": "sql/repeat_by_segment.sql",
+      "unit": "%"
+    },
+    "late_share_pct": {
+      "value": 6.77309,
+      "source": "sql/lateness_summary.sql",
+      "unit": "%"
+    },
+    "mean_score_on_time": {
+      "value": 4.290386,
+      "source": "sql/lateness_summary.sql",
+      "unit": ""
+    },
+    "mean_score_late": {
+      "value": 2.270491,
+      "source": "sql/lateness_summary.sql",
+      "unit": ""
+    },
+    "score_gap_late": {
+      "value": 2.019896,
+      "source": "sql/lateness_summary.sql",
+      "unit": ""
+    },
+    "one_star_on_time_pct": {
+      "value": 6.61874,
+      "source": "sql/lateness_summary.sql",
+      "unit": "%"
+    },
+    "one_star_late_pct": {
+      "value": 53.769002,
+      "source": "sql/lateness_summary.sql",
+      "unit": "%"
+    },
+    "mean_score_more_than_14_days_late": {
+      "value": 1.723596,
+      "source": "sql/lateness_review.sql",
+      "unit": ""
+    },
+    "one_star_more_than_14_days_late_pct": {
+      "value": 68.988764,
+      "source": "sql/lateness_review.sql",
+      "unit": "%"
+    }
+  },
+  "tables": {
+    "funnel_by_month": {
+      "source": "sql/funnel_by_month.sql + funnel_conversions()",
+      "columns": [
+        "month",
+        "created",
+        "approved",
+        "handed_to_carrier",
+        "delivered",
+        "reviewed",
+        "canceled",
+        "unavailable",
+        "approved_pct",
+        "handed_to_carrier_pct",
+        "delivered_pct",
+        "reviewed_pct",
+        "cancel_pct"
+      ],
+      "rows": [
+        [
+          "2016-09",
+          4,
+          4.0,
+          2.0,
+          1.0,
+          1.0,
+          2.0,
+          0.0,
+          100.0,
+          50.0,
+          50.0,
+          100.0,
+          50.0
+        ],
+        [
+          "2016-10",
+          324,
+          318.0,
+          278.0,
+          270.0,
+          267.0,
+          24.0,
+          7.0,
+          98.148,
+          87.421,
+          97.122,
+          98.889,
+          9.568
+        ],
+        [
+          "2016-12",
+          1,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          100.0,
+          100.0,
+          100.0,
+          100.0,
+          0.0
+        ],
+        [
+          "2017-01",
+          800,
+          799.0,
+          766.0,
+          750.0,
+          741.0,
+          3.0,
+          10.0,
+          99.875,
+          95.87,
+          97.911,
+          98.8,
+          1.625
+        ],
+        [
+          "2017-02",
+          1780,
+          1778.0,
+          1674.0,
+          1653.0,
+          1643.0,
+          17.0,
+          45.0,
+          99.888,
+          94.151,
+          98.746,
+          99.395,
+          3.483
+        ],
+        [
+          "2017-03",
+          2682,
+          2680.0,
+          2591.0,
+          2546.0,
+          2527.0,
+          33.0,
+          32.0,
+          99.925,
+          96.679,
+          98.263,
+          99.254,
+          2.424
+        ],
+        [
+          "2017-04",
+          2404,
+          2400.0,
+          2352.0,
+          2303.0,
+          2290.0,
+          18.0,
+          9.0,
+          99.834,
+          98.0,
+          97.917,
+          99.436,
+          1.123
+        ],
+        [
+          "2017-05",
+          3700,
+          3691.0,
+          3600.0,
+          3545.0,
+          3517.0,
+          29.0,
+          31.0,
+          99.757,
+          97.535,
+          98.472,
+          99.21,
+          1.622
+        ],
+        [
+          "2017-06",
+          3245,
+          3241.0,
+          3182.0,
+          3135.0,
+          3111.0,
+          16.0,
+          24.0,
+          99.877,
+          98.18,
+          98.523,
+          99.234,
+          1.233
+        ],
+        [
+          "2017-07",
+          4026,
+          4021.0,
+          3928.0,
+          3872.0,
+          3842.0,
+          28.0,
+          52.0,
+          99.876,
+          97.687,
+          98.574,
+          99.225,
+          1.987
+        ],
+        [
+          "2017-08",
+          4331,
+          4325.0,
+          4234.0,
+          4193.0,
+          4165.0,
+          27.0,
+          32.0,
+          99.861,
+          97.896,
+          99.032,
+          99.332,
+          1.362
+        ],
+        [
+          "2017-09",
+          4285,
+          4281.0,
+          4188.0,
+          4150.0,
+          4118.0,
+          20.0,
+          38.0,
+          99.907,
+          97.828,
+          99.093,
+          99.229,
+          1.354
+        ],
+        [
+          "2017-10",
+          4631,
+          4626.0,
+          4511.0,
+          4478.0,
+          4446.0,
+          26.0,
+          58.0,
+          99.892,
+          97.514,
+          99.268,
+          99.285,
+          1.814
+        ],
+        [
+          "2017-11",
+          7544,
+          7535.0,
+          7361.0,
+          7288.0,
+          7237.0,
+          37.0,
+          84.0,
+          99.881,
+          97.691,
+          99.008,
+          99.3,
+          1.604
+        ],
+        [
+          "2017-12",
+          5673,
+          5666.0,
+          5571.0,
+          5513.0,
+          5461.0,
+          11.0,
+          42.0,
+          99.877,
+          98.323,
+          98.959,
+          99.057,
+          0.934
+        ],
+        [
+          "2018-01",
+          7269,
+          7268.0,
+          7169.0,
+          7069.0,
+          7013.0,
+          34.0,
+          48.0,
+          99.986,
+          98.638,
+          98.605,
+          99.208,
+          1.128
+        ],
+        [
+          "2018-02",
+          6728,
+          6724.0,
+          6653.0,
+          6556.0,
+          6508.0,
+          73.0,
+          30.0,
+          99.941,
+          98.944,
+          98.542,
+          99.268,
+          1.531
+        ],
+        [
+          "2018-03",
+          7211,
+          7208.0,
+          7138.0,
+          7003.0,
+          6948.0,
+          26.0,
+          17.0,
+          99.958,
+          99.029,
+          98.109,
+          99.215,
+          0.596
+        ],
+        [
+          "2018-04",
+          6939,
+          6939.0,
+          6897.0,
+          6798.0,
+          6752.0,
+          15.0,
+          5.0,
+          100.0,
+          99.395,
+          98.565,
+          99.323,
+          0.288
+        ],
+        [
+          "2018-05",
+          6873,
+          6872.0,
+          6803.0,
+          6749.0,
+          6722.0,
+          24.0,
+          16.0,
+          99.985,
+          98.996,
+          99.206,
+          99.6,
+          0.582
+        ],
+        [
+          "2018-06",
+          6167,
+          6167.0,
+          6142.0,
+          6096.0,
+          6072.0,
+          18.0,
+          4.0,
+          100.0,
+          99.595,
+          99.251,
+          99.606,
+          0.357
+        ],
+        [
+          "2018-07",
+          6292,
+          6291.0,
+          6219.0,
+          6156.0,
+          6118.0,
+          41.0,
+          18.0,
+          99.984,
+          98.856,
+          98.987,
+          99.383,
+          0.938
+        ],
+        [
+          "2018-08",
+          6512,
+          6459.0,
+          6398.0,
+          6351.0,
+          6330.0,
+          84.0,
+          7.0,
+          99.186,
+          99.056,
+          99.265,
+          99.669,
+          1.397
+        ],
+        [
+          "2018-09",
+          16,
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          15.0,
+          0.0,
+          6.25,
+          100.0,
+          0.0,
+          null,
+          93.75
+        ],
+        [
+          "2018-10",
+          4,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          4.0,
+          0.0,
+          0.0,
+          null,
+          null,
+          null,
+          100.0
+        ]
+      ]
+    },
+    "step_hours_by_month": {
+      "source": "sql/step_hours.sql",
+      "columns": [
+        "month",
+        "orders",
+        "approve_hours",
+        "carrier_hours",
+        "deliver_hours"
+      ],
+      "rows": [
+        [
+          "2016-09",
+          4,
+          677.45,
+          770.42,
+          38.6
+        ],
+        [
+          "2016-10",
+          324,
+          14.03,
+          213.73,
+          77.68
+        ],
+        [
+          "2016-12",
+          1,
+          0.25,
+          78.72,
+          33.67
+        ],
+        [
+          "2017-01",
+          800,
+          0.3,
+          43.41,
+          171.45
+        ],
+        [
+          "2017-02",
+          1780,
+          0.23,
+          44.88,
+          175.53
+        ],
+        [
+          "2017-03",
+          2682,
+          0.13,
+          43.52,
+          169.08
+        ],
+        [
+          "2017-04",
+          2404,
+          0.25,
+          47.21,
+          213.6
+        ],
+        [
+          "2017-05",
+          3700,
+          0.23,
+          37.92,
+          168.75
+        ],
+        [
+          "2017-06",
+          3245,
+          0.25,
+          44.72,
+          178.33
+        ],
+        [
+          "2017-07",
+          4026,
+          0.25,
+          46.42,
+          169.35
+        ],
+        [
+          "2017-08",
+          4331,
+          0.32,
+          45.1,
+          166.7
+        ],
+        [
+          "2017-09",
+          4285,
+          0.27,
+          47.97,
+          170.17
+        ],
+        [
+          "2017-10",
+          4631,
+          0.32,
+          47.03,
+          169.15
+        ],
+        [
+          "2017-11",
+          7544,
+          0.42,
+          65.68,
+          210.24
+        ],
+        [
+          "2017-12",
+          5673,
+          0.35,
+          51.8,
+          218.17
+        ],
+        [
+          "2018-01",
+          7269,
+          0.32,
+          50.45,
+          192.85
+        ],
+        [
+          "2018-02",
+          6728,
+          0.37,
+          51.85,
+          264.6
+        ],
+        [
+          "2018-03",
+          7211,
+          0.35,
+          49.61,
+          237.12
+        ],
+        [
+          "2018-04",
+          6939,
+          0.45,
+          33.13,
+          165.87
+        ],
+        [
+          "2018-05",
+          6873,
+          0.45,
+          31.12,
+          156.42
+        ],
+        [
+          "2018-06",
+          6167,
+          0.45,
+          28.04,
+          140.4
+        ],
+        [
+          "2018-07",
+          6292,
+          0.53,
+          26.05,
+          127.21
+        ],
+        [
+          "2018-08",
+          6512,
+          0.28,
+          27.87,
+          118.82
+        ],
+        [
+          "2018-09",
+          16,
+          8.57,
+          21.75,
+          null
+        ],
+        [
+          "2018-10",
+          4,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "cohort_matrix_12x6": {
+      "source": "sql/cohort_retention.sql + cohort_matrix()",
+      "columns": [
+        "cohort",
+        "customers",
+        "month_1_pct",
+        "month_2_pct",
+        "month_3_pct",
+        "month_4_pct",
+        "month_5_pct",
+        "month_6_pct"
+      ],
+      "rows": [
+        [
+          "2017-03",
+          2636,
+          1.593,
+          1.821,
+          2.314,
+          2.618,
+          2.731,
+          2.769
+        ],
+        [
+          "2017-04",
+          2352,
+          1.276,
+          1.616,
+          1.871,
+          1.913,
+          2.253,
+          2.594
+        ],
+        [
+          "2017-05",
+          3596,
+          1.835,
+          2.253,
+          2.586,
+          2.864,
+          3.17,
+          3.393
+        ],
+        [
+          "2017-06",
+          3139,
+          1.784,
+          2.198,
+          2.676,
+          2.963,
+          3.09,
+          3.536
+        ],
+        [
+          "2017-07",
+          3894,
+          1.721,
+          2.08,
+          2.26,
+          2.491,
+          2.773,
+          2.979
+        ],
+        [
+          "2017-08",
+          4184,
+          1.673,
+          2.247,
+          2.438,
+          2.772,
+          3.059,
+          3.37
+        ],
+        [
+          "2017-09",
+          4130,
+          1.671,
+          2.107,
+          2.542,
+          2.809,
+          3.123,
+          3.269
+        ],
+        [
+          "2017-10",
+          4470,
+          1.454,
+          2.013,
+          2.081,
+          2.192,
+          2.394,
+          2.528
+        ],
+        [
+          "2017-11",
+          7304,
+          1.479,
+          1.807,
+          2.054,
+          2.218,
+          2.355,
+          2.547
+        ],
+        [
+          "2017-12",
+          5487,
+          0.929,
+          1.221,
+          1.567,
+          1.768,
+          2.059,
+          2.223
+        ],
+        [
+          "2018-01",
+          7025,
+          1.324,
+          1.68,
+          1.993,
+          2.263,
+          2.391,
+          2.534
+        ],
+        [
+          "2018-02",
+          6451,
+          1.984,
+          2.294,
+          2.62,
+          2.868,
+          3.1,
+          3.302
+        ]
+      ]
+    },
+    "repeat_6m_by_state_top8": {
+      "source": "sql/repeat_by_segment.sql",
+      "columns": [
+        "split",
+        "segment",
+        "customers",
+        "repeat_6m_pct"
+      ],
+      "rows": [
+        [
+          "state",
+          "SP",
+          22729,
+          3.089
+        ],
+        [
+          "state",
+          "RJ",
+          7766,
+          2.987
+        ],
+        [
+          "state",
+          "MG",
+          6860,
+          2.697
+        ],
+        [
+          "state",
+          "RS",
+          3291,
+          2.947
+        ],
+        [
+          "state",
+          "PR",
+          2893,
+          2.765
+        ],
+        [
+          "state",
+          "SC",
+          2225,
+          2.202
+        ],
+        [
+          "state",
+          "BA",
+          1986,
+          2.518
+        ],
+        [
+          "state",
+          "ES",
+          1218,
+          2.956
+        ]
+      ]
+    },
+    "repeat_6m_by_payment_type": {
+      "source": "sql/repeat_by_segment.sql",
+      "columns": [
+        "split",
+        "segment",
+        "customers",
+        "repeat_6m_pct"
+      ],
+      "rows": [
+        [
+          "payment_type",
+          "credit_card",
+          42747,
+          2.826
+        ],
+        [
+          "payment_type",
+          "boleto",
+          11976,
+          2.931
+        ],
+        [
+          "payment_type",
+          "voucher",
+          1873,
+          3.631
+        ],
+        [
+          "payment_type",
+          "debit_card",
+          588,
+          2.381
+        ]
+      ]
+    },
+    "lateness_buckets": {
+      "source": "sql/lateness_review.sql",
+      "columns": [
+        "bucket",
+        "bucket_min",
+        "orders",
+        "mean_score",
+        "one_star_pct"
+      ],
+      "rows": [
+        [
+          "on time or early",
+          -147,
+          89443,
+          4.29,
+          6.619
+        ],
+        [
+          "1 to 7 days late",
+          1,
+          3600,
+          2.714,
+          41.361
+        ],
+        [
+          "8 to 14 days late",
+          8,
+          1446,
+          1.671,
+          70.609
+        ],
+        [
+          "more than 14 days late",
+          15,
+          1335,
+          1.724,
+          68.989
+        ]
+      ]
+    },
+    "lateness_summary": {
+      "source": "sql/lateness_summary.sql",
+      "columns": [
+        "delivery",
+        "delivered_orders",
+        "share_pct",
+        "mean_score",
+        "one_star_pct"
+      ],
+      "rows": [
+        [
+          "on time",
+          89936,
+          93.227,
+          4.29,
+          6.619
+        ],
+        [
+          "late",
+          6534,
+          6.773,
+          2.27,
+          53.769
+        ]
+      ]
+    }
+  },
+  "figures": {
+    "funnel_conversion_by_month": {
+      "file": "cases/01_funnel_retention/figures/funnel_conversion_by_month.png",
+      "source": "sql/funnel_by_month.sql + plot_funnel()"
+    },
+    "cohort_retention_matrix": {
+      "file": "cases/01_funnel_retention/figures/cohort_retention_matrix.png",
+      "source": "sql/cohort_retention.sql + plot_cohorts()"
+    },
+    "lateness_vs_review": {
+      "file": "cases/01_funnel_retention/figures/lateness_vs_review.png",
+      "source": "sql/lateness_review.sql + plot_lateness()"
+    }
+  },
+  "notes": {
+    "dataset": "Olist Brazilian E-Commerce (orders, customers, reviews, payments)",
+    "licence": "CC BY-NC-SA 4.0",
+    "headline": "six-month repeat rate 2.9 %, largest funnel loss at handed to carrier (1.6 %)",
+    "recommendation": "do not fund a loyalty programme yet, fix delivery lateness and instrument repeat intent"
+  }
+}
