@@ -45,6 +45,7 @@ def connect(dataset: str) -> duckdb.DuckDBPyConnection:
     """In-memory DuckDB with one view per raw file of ``dataset`` (``olist`` or ``upworthy``)."""
     views = OLIST_VIEWS if dataset == "olist" else UPWORTHY_VIEWS
     con = duckdb.connect(database=":memory:")
+    con.execute("SET threads TO 1")  # a fixed summation order keeps floating sums identical run to run
     for name, fname in views.items():
         path = (RAW / dataset / fname).as_posix()
         con.execute(f"CREATE VIEW {name} AS SELECT * FROM read_csv('{path}', header=true, all_varchar=false)")
@@ -103,7 +104,7 @@ def write_derived(dataset: str, name: str, df: pd.DataFrame) -> Path:
     folder = DERIVED / dataset
     folder.mkdir(parents=True, exist_ok=True)
     path = folder / name
-    df.to_csv(path, index=False)
+    df.round(6).to_csv(path, index=False)
     return path
 
 
