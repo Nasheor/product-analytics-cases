@@ -1,0 +1,14 @@
+{
+  "verified": false,
+  "verified_on": null,
+  "sources": [
+    "fill with the official Anthropic pricing page URL and the OpenRouter model page URLs on the day of verification"
+  ],
+  "note": "USD per million tokens. Fill from the official pages, never from memory. costcap.py refuses paid calls while verified is false.",
+  "usd_per_mtok": {
+    "claude-sonnet-4-5-20250929": { "in": null, "out": null },
+    "claude-sonnet-5-5": { "in": null, "out": null },
+    "claude-haiku-5-5": { "in": null, "out": null },
+    "claude-opus-5-5": { "in": null, "out": null }
+  }
+}
