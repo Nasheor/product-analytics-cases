@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-28T15:30:31+00:00",
+  "generated_at": "2026-11-26T18:54:57+00:00",
   "data_sources": {
     "olist": {
       "rows_total": 1550922,
@@ -56,5 +56,5 @@
     "case3_memo_words": "594",
     "case3_notebook": "yes"
   },
-  "seconds": 104.1
+  "seconds": 165.7
 }
